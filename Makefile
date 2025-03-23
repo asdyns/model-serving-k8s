@@ -1,4 +1,4 @@
-.PHONY: start-mlflow stop-mlflow run-requirements run-model
+.PHONY: start-mlflow stop-mlflow run-requirements run-model test-bentoml-model
 
 start-mlflow:
 	# run MLflow in detached mode
@@ -15,3 +15,8 @@ run-requirements:
 run-model:
 	@echo "Running model..."
 	@python3 models/iris-model.py
+
+test-bentoml-model:
+	@echo "Loading model to BentoML..."
+	@python3 serving/iris-model-bento.py
+	@echo "Done!"

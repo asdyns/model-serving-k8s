@@ -1,3 +1,5 @@
 .venv/
 mlruns/
 __pycache__/
+mlartifacts/
+*.log
