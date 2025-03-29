@@ -1,6 +1,7 @@
 import bentoml
 import numpy as np
 import pandas as pd
+
 import logging
 
 logging.basicConfig(
@@ -13,10 +14,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-model_tag = "iris-bento-model:ixhe44yhu6b2gabl"
+model_tag = "iris-bento-model:latest"
 
 def test_model():
-    logging.info(f'Loading model {model_tag}')
+    logger.info(f'Loading model {model_tag}')
     iris_model = bentoml.mlflow.load_model(model_tag)
     
     # Create DataFrame with correct column names
@@ -25,9 +26,9 @@ def test_model():
         columns=['sepal length (cm)', 'sepal width (cm)', 
                 'petal length (cm)', 'petal width (cm)']
     )
-    logging.info(f'Testing for {input_data}')
+    logger.info(f'Testing for {input_data}')
     res = iris_model.predict(input_data)
-    logging.info(f'Model species: {res}')
+    logger.info(f'Model species: {res}')
 
 if __name__ == "__main__":
     test_model()
